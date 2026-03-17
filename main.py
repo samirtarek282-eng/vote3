@@ -103,7 +103,7 @@ def send_vote(vote_id):
 if __name__ == "__main__":
   while True:
     start_time = time.time()
-    total_votes = 200
+    total_votes = 300
     
     print(f"🚀 جاري ضرب {total_votes} ريكويست باستخدام البروكسيات المجانية...")
     print("⚠️ (تم كتم رسائل الخطأ للبروكسيات الميتة لعدم إزعاجك، سيظهر النجاح فقط)\n")
