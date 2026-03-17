@@ -46,7 +46,7 @@ def send_vote(vote_id):
         session = requests.Session(impersonate="chrome", proxies=proxies_dict)
         
         # 1. سحب التوكن (خلينا الـ Timeout 10 ثواني عشان لو البروكسي ميت منضيعش وقت)
-        url_get = "https://www.radionrjfm.com/vote/20"
+        url_get = "https://www.radionrjfm.com/vote/36"
         response = session.get(url_get, timeout=10)
         
         if response.status_code in [403, 429]:
@@ -74,16 +74,16 @@ def send_vote(vote_id):
             "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
             "content-type": "application/x-www-form-urlencoded",
             "origin": "https://www.radionrjfm.com",
-            "referer": "https://www.radionrjfm.com/vote/20",
+            "referer": "https://www.radionrjfm.com/vote/36",
             "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
         }
         
         payload = {
-            "gidvnrj": "20",
+            "gidvnrj": "36",
             "sex": "1",
             "age": "3",
             "_token": csrf_token,
-            "answers[435]": "1"
+            "answers[586]": "1"
         }
         
         # 4. إرسال التصويت
@@ -103,13 +103,13 @@ def send_vote(vote_id):
 if __name__ == "__main__":
   while True:
     start_time = time.time()
-    total_votes = 100
+    total_votes = 200
     
     print(f"🚀 جاري ضرب {total_votes} ريكويست باستخدام البروكسيات المجانية...")
     print("⚠️ (تم كتم رسائل الخطأ للبروكسيات الميتة لعدم إزعاجك، سيظهر النجاح فقط)\n")
     
     # فتحنا 30 مسار عشان ننجز وقت، لأن البروكسيات المجانية بتقع كتير
-    with ThreadPoolExecutor(max_workers=30) as executor:
+    with ThreadPoolExecutor(max_workers=50) as executor:
         results = list(executor.map(send_vote, range(1, total_votes + 1)))
         
     end_time = time.time()
